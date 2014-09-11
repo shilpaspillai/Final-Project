@@ -15,6 +15,7 @@
                      company name:
                      <input type="text" name="company-name" id="company-name"></div>
                      <div class="button"><input type="submit" name="submit" value="submit"></div>
+                     <?php echo $this->session->flashdata['alert_error'];?>
             </div>   
           </form> 
         </div>

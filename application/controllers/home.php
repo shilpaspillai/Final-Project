@@ -33,13 +33,13 @@ class home extends CI_Controller{
             $data['insert_company']=$this->user_model->company_insert($cname);
             if($data['insert_company'] == false)
             {
-            echo '<script>alert("The data already exists!");</script>';
-               redirect('home/add_company', 'refresh');
+            $this->session->set_flashdata("alert_error", "The data already exist");    
+            redirect('home/add_company', 'refresh');
             } 
             else
             {
-            echo '<script>alert("You Have Successfully updated this Record!");</script>';
-            redirect('home/show_home', 'refresh');
+             $this->session->set_flashdata("alert_error", "You Have Successfully updated this Record!");
+               redirect('home/show_home', 'refresh');
             }
         }
        

@@ -5,12 +5,11 @@
         <title> login page</title>
     </head> 
     <body>
-<div class="container">
+<div class="container-login">
 	<div class="row">
 	<br/>
-		<div class="span4 offset4 well">
-		
-			<legend>Please Sign In</legend>
+		<div class="loginbox">
+		<legend>Please Sign In</legend>
 			<?php if(isset($error) && $error): ?>
 				<div class="alert alert-error">
 					<a class="close" data-dismiss="alert" href="#">x</a>Incorrect Username or Password!

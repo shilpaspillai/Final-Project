@@ -10,7 +10,7 @@ class login extends CI_Controller{
 		}
 	}
 	
-	function show_login($show_error = false)
+	function show_login()
                 {
 		$data['error'] = $show_error;
                 $this->load->helper('form');
@@ -67,11 +67,11 @@ class login extends CI_Controller{
             $qr['insert']=$this->user_model->user_insert($usname,$pass,$cname);
             if($qr['insert'] == FALSE)
             {
-             echo '<script>alert("The data already exists!");</script>';
+            $this->session->set_flashdata("alert_error", "The data already exist"); 
             redirect('home/add_user', 'refresh');
              } 
              else{
-              echo '<script>alert("USER data entered successfully!");</script>';
+              $this->session->set_flashdata("alert_error", "USER data entered successfully!");   
               redirect('home/show_home', 'refresh');
                }
          }

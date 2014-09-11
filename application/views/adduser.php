@@ -25,7 +25,8 @@
                       }
                 ?>
                  </select>
-                   <input type="submit" name="submit" value="submit">  
+                   <input type="submit" name="submit" value="submit"> 
+                    <?php echo $this->session->flashdata['alert_error'];?>
                    <?php echo form_close(); ?>
         </div>
     </body>

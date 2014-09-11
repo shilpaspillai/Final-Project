@@ -17,6 +17,7 @@
                        <a href="<?php echo base_url(); ?>home/add_company">ADD ORGANIZATION</a> </div>
                        <div class="align_a"> <a href="<?php echo base_url(); ?>home/add_user">ADD user</a></div>
                     <a href="<?php echo base_url(); ?>login/sign_out">SIGN OUT</a>
+                    <?php echo $this->session->flashdata['alert_error'];?>
                 </div>
              </form>
        </div>

@@ -46,6 +46,19 @@ html{
     background-color:  #999;
     
 }
+.container-login
+{
+ width: 940px;
+ display: block;
+ margin:0 auto;
+ 
+}
+.loginbox
+{
+   margin-left:50px;
+   margin-top:50px;
+   display:block;
+}
 .container{
     width:940px;
     display:block;
@@ -53,7 +66,7 @@ html{
     background-color:#B3B4BD; 
 }
 .form
-{
+ {
   padding: 10px;
   display:block;
   margin-top: 15px;
