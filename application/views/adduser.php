@@ -2,14 +2,17 @@
 <html>
     <head>
         <link href="style.css" rel="stylesheet">
+       
          <title>
             add new user
         </title>
     </head> 
     <body>
-               <div class="container">
+                  <div class="container">
                                <div class="header">
                     <h1>user details</h1>
+                    <h4><?php echo $this->session->flashdata('alert_error');?> </h4>
+                      <h4><?php echo $this->session->flashdata('alert_usrer');?> </h4>
                 </div> 
                  <?php echo form_open('login/add_user')?>
                 <div class="labelcontrol">
@@ -26,8 +29,9 @@
                 ?>
                  </select>
                    <input type="submit" name="submit" value="submit"> 
-                    <?php echo $this->session->flashdata['alert_error'];?>
+                
                    <?php echo form_close(); ?>
         </div>
+        </form>
     </body>
 </html>

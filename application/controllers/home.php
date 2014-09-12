@@ -29,18 +29,23 @@ class home extends CI_Controller{
         function company_insert()
         {   
             $cname=$this->input->post('company-name');
+            if($cname != NULL)
+            {
             $this->load->model('user_model');
             $data['insert_company']=$this->user_model->company_insert($cname);
             if($data['insert_company'] == false)
             {
-            $this->session->set_flashdata("alert_error", "The data already exist");    
+            $this->session->set_flashdata("alert_error", "The company already exist");    
             redirect('home/add_company', 'refresh');
             } 
             else
             {
-             $this->session->set_flashdata("alert_error", "You Have Successfully updated this Record!");
-               redirect('home/show_home', 'refresh');
+             $this->session->set_flashdata("alert_success", "You Have Successfully updated this Record!");
+             redirect('home/show_home', 'refresh');
             }
+            }
+            else { $this->session->set_flashdata("alert_com", "enter the company");    
+            redirect('home/add_company', 'refresh');}
         }
        
         

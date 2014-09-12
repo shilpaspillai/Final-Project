@@ -5,9 +5,12 @@
         <title> login page</title>
     </head> 
     <body>
+      
 <div class="container-login">
 	<div class="row">
 	<br/>
+        <h4>    <?php echo $this->session->flashdata('alert_er');?> </h4>
+          <h4>    <?php echo $this->session->flashdata('alert_err');?> </h4>
 		<div class="loginbox">
 		<legend>Please Sign In</legend>
 			<?php if(isset($error) && $error): ?>
@@ -15,6 +18,7 @@
 					<a class="close" data-dismiss="alert" href="#">x</a>Incorrect Username or Password!
 				</div>
 			<?php endif; ?>
+              
 			<?php echo form_open('login/login_user') ?>
 			<!-- Login Box Starts Here -->
 			<input type="text" id="username" class="span4" name="username" placeholder="Username"><br/><br/>

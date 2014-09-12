@@ -17,17 +17,17 @@ class user_model extends CI_Model {
                         {
                         echo "123";
                         $this->set_session();
-                        return true;
+                        return array('status'=>true,'mode'=>'admin');
                         }
                         else if($login[0]->role==2)
                         {
                         $this->set_session();
-                        return 2;
+                        return array('status'=>true,'mode'=>'user');
                         }
                     }
                     else
                      {
-                     return FALSE;
+                     return array('status'=>false,'mode'=>'admin','msg'=>'incorrect username or password');
                      }
                 }
             
@@ -37,7 +37,7 @@ class user_model extends CI_Model {
 			'id' => $this->details->id,
 		        'username' => $this->details->username,
                         'company_name' =>$this->details->company_name,
-			'isLoggedIn' => true
+              	         'isLoggedIn' => true
 			)
 		);
 	}

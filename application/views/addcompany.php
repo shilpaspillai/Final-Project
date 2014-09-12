@@ -2,12 +2,15 @@
 <html>
     <head>
         <link href="style.css" rel="stylesheet">
-        <title>add-company </title>
+      
+                <title>add-company </title>
         </head>
     <body>
-     <div class="admin-container">
+          <div class="admin-container">
             <div class="header-company">
             <h2> ADD COMPANY </h2>
+            <h4>    <?php echo $this->session->flashdata('alert_error');?></h4>
+                 <h4>    <?php echo $this->session->flashdata('alert_com');?></h4>
              </div>
                <?php echo form_open('home/company_insert')?>
                 <div class="contents">
@@ -15,7 +18,7 @@
                      company name:
                      <input type="text" name="company-name" id="company-name"></div>
                      <div class="button"><input type="submit" name="submit" value="submit"></div>
-                     <?php echo $this->session->flashdata['alert_error'];?>
+                     <?php echo $this->session->flashdata('alert_error');?>
             </div>   
           </form> 
         </div>
