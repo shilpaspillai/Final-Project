@@ -16,11 +16,21 @@ class home extends CI_Controller{
 	}
          function add_user()
          {
-        $this->load->model('user_model');
-        $data['groups'] =$this->user_model->getAllGroups();
-        $this->load->helper('form');
-        $this->load->view('adduser',$data);   
-        }
+           $this->load->model('user_model');    
+           $insert=$this->user_model->is_admin();
+            if($insert)
+            {
+          $this->load->model('company_model');
+          $data['groups'] =$this->company_model->getAllGroups();
+          $this->load->helper('form');
+          $this->load->view('adduser',$data);   
+           }
+         else
+             {
+             $this->session->set_flashdata("alert_adm", "user don't have admin-rights for adding new user and new company!!!");
+             redirect ('/login/show_login');
+              }
+         }
         function  add_company()
          {
          $this->load->helper('form');
@@ -28,11 +38,16 @@ class home extends CI_Controller{
          }
         function company_insert()
         {   
-            $cname=$this->input->post('company-name');
+            $this->load->model('user_model');    
+           $insert=$this->user_model->is_admin();
+             if($insert)
+             {
+             $cname=$this->input->post('company-name');
+             
             if($cname != NULL)
             {
-            $this->load->model('user_model');
-            $data['insert_company']=$this->user_model->company_insert($cname);
+            $this->load->model('company_model');
+            $data['insert_company']=$this->company_model->company_insert($cname);
             if($data['insert_company'] == false)
             {
             $this->session->set_flashdata("alert_error", "The company already exist");    
@@ -46,9 +61,18 @@ class home extends CI_Controller{
             }
             else { $this->session->set_flashdata("alert_com", "enter the company");    
             redirect('home/add_company', 'refresh');}
+            }
+          else 
+              {
+              $this->session->set_flashdata("alert_adm", "user don't have admin-rights for adding new user and new company!!!"); 
+             redirect ('/login/show_login'); 
+             }
         }
+        
+        
+   }
        
         
     
-}
+
 

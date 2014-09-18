@@ -26,6 +26,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+        height: 100%;
+    clear: both;
 }
 ol, ul {
 	list-style: none;
@@ -43,75 +45,63 @@ table {
 	border-spacing: 0;
 }
 html{
-    background-color:  #999;
-    
+   
+    height: 100%;
+    clear: both;
 }
-.container-login
-{
- width: 940px;
- display: block;
- margin:0 auto;
- 
+
+
+.container{
+    width:940px;
+    height: 100%;
+    clear: both;
+    display: block;
+    
 }
 .loginbox
 {
-   margin-left:50px;
-   margin-top:50px;
-   display:block;
+    padding: 20px;
+    margin-top:25%;
+    border-radius: 33px;
+    border:dotted 3px #282828;
+    
 }
-.container{
-    width:940px;
-    display:block;
-    margin:0 auto;
-    background-color:#B3B4BD; 
+.botton
+{
+color: rgb(17, 0, 28);
+font-size: 28px;
+margin-top: 25px;
+padding: 10px;
+text-shadow: 0px -11px 14px rgba(87, 172, 30, 0);
+-webkit-border-radius: 33.24324324324324px;
+-moz-border-radius: 33.24324324324324px;
+border-radius: 33.24324324324324px;
+background: rgb(39, 62, 28);
+background: -moz-linear-gradient(26deg, rgb(39, 62, 28) 33%, rgb(226, 46, 175) 87%);
+background: -webkit-linear-gradient(26deg, rgb(39, 62, 28) 33%, rgb(226, 46, 175) 87%);
+background: -o-linear-gradient(26deg, rgb(39, 62, 28) 33%, rgb(226, 46, 175) 87%);
+background: -ms-linear-gradient(26deg, rgb(39, 62, 28) 33%, rgb(226, 46, 175) 87%);
+background: linear-gradient(296deg, rgb(39, 62, 28) 33%, rgb(226, 46, 175) 87%);
+-webkit-box-shadow: 17px 2px 7px rgba(149, 145, 64, 0.72);
+-moz-box-shadow:    17px 2px 7px rgba(149, 145, 64, 0.72);
+box-shadow:         17px 2px 7px rgba(149, 145, 64, 0.72);
 }
-.form
- {
-  padding: 10px;
-  display:block;
-  margin-top: 15px;
-  border-radius:14px;
-  width:250px;
-   background-color: #ccc; 
+.user-data
+{
+    width:500px;
+    margin-top: 150px;
+    padding:10px;
+    font-size:20px;
+    height: 100%;
+    clear: both;
+    border: solid 2px #080808;
 }
-.label-control{
-       padding-top: 15px;
-       width: 250px;
-       display:block;
-       font-size: 20px;
-       color:#D893A1;
+.align-botton
+{
+    margin-top: 25px;
 }
-.header{
-     margin-bottom:3px;
-     width:530px;
-     margin-top: 15px;
-     padding :5px;
-     border-bottom:2px solid #000;
-    }
-    .control-labels{
-          width:350px;
-          padding: 5px;
-          display:block;
-          font-size: 20px;
-          color:#D893A1;
-          float:left;
-         }
-    .banner{
-        margin:0 auto;
-        width: 930px;
-        background-color: #000;
-     
-    }
-    .contents{
-           display: block;
-           height: 250px;
-           background-color:#B3B4BD;
-           margin-left: 100px;
-           margin-top: 5px;
-           padding:10px;
-           }
-           .control-labels1
-           {
-               float:left;
-           }
-           
+
+
+
+    
+    

@@ -12,6 +12,7 @@ class login extends CI_Controller{
 	
 	function show_login($show_error=false)
                 {
+                      
 		$data['error'] = $show_error;
                 $this->load->helper('form');
 		$this->load->view('login', $data);
@@ -57,30 +58,43 @@ class login extends CI_Controller{
            {
            $this->session->sess_destroy();
            $this->index();
-         }
+           }
                  
          function add_user()
-         {       
-             $this->load->model('user_model');
-             $usname=$this->input->post('username');
-             $pass=$this->input->post('password');
-             $cname=$this->input->post('companyname');
-             if($usname != NULL && $pass != NULL && $cname != NULL)
-             {
-                $qr['insert']=$this->user_model->user_insert($usname,$pass,$cname);
-                if($qr['insert'] == FALSE)
-                  {
-                  $this->session->set_flashdata("alert_error", "The data already exist"); 
-                  redirect('home/add_user', 'refresh');
-                  } 
-                 else{
-                  $this->session->set_flashdata("alert_user", "USER data entered successfully!");   
-                   redirect('home/show_home', 'refresh');
-                     }
-              }
-             else{$this->session->set_flashdata("alert_usrer", "ENTER ALL FIELDS..."); 
-              redirect('home/add_user', 'refresh');}
-        }
+         {  
+            $this->load->model('company_model');
+            $cid=$this->input->post('companyname');
+            $com=$this->company_model->check_company($cid);
+                      if($com)
+                      {
+                      $this->load->model('user_model');
+                      $usname=$this->input->post('username');
+                      $pass=$this->input->post('password');
+                      $cid=$this->input->post('companyname');
+                         if($usname != NULL && $pass != NULL && $cid != NULL)
+                         {
+                         $qr['insert']=$this->user_model->user_insert($usname,$pass,$cid);
+                         if($qr['insert'] == FALSE)
+                          {
+                          $this->session->set_flashdata("alert_error", "The data already exist"); 
+                          redirect('home/add_user', 'refresh');
+                          } 
+                          else
+                           {
+                           $this->session->set_flashdata("alert_user", "USER data entered successfully!");   
+                           redirect('home/show_home', 'refresh');
+                           }
+                           }
+                          else
+                           {$this->session->set_flashdata("alert_usrer", "ENTER ALL FIELDS..."); 
+                            redirect('home/add_user', 'refresh');}
+                           }
+                        else
+                        {
+                        $this->session->set_flashdata("alert_company", "ENTER THE COMPANY"); 
+                        redirect('home/add_user', 'refresh');           
+                        }
+     }
   }
 
            

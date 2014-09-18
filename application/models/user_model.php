@@ -31,62 +31,60 @@ class user_model extends CI_Model {
                      }
                 }
             
- 
-	function set_session() {
-		$this->session->set_userdata( array(
+   function getCompanyname($company_id)
+                 {
+                    $this->db->from('add_company');
+                    $this->db->select('company_name');
+                    $this->db->where('id',$company_id);
+                    $res=$this->db->get()->result();
+                    return $res[0]->company_name;
+                }
+                
+    function set_session() {
+            		 $this->session->set_userdata( array(
 			'id' => $this->details->id,
 		        'username' => $this->details->username,
-                        'company_name' =>$this->details->company_name,
+                        'company_name' =>  self::getCompanyname($this->details->company_id),
+                         'entry_role' => $this->details->role,
               	         'isLoggedIn' => true
 			)
 		);
 	}
-        function company_insert($cname)
-        {
-            
-        $this->db->from('add_company');
-        $this->db->select('*');
-        $this->db->where('company_name',$cname);
-         $log= $this->db->get()->result();
-       if(count($log)==1)
-       {
-        return false;
-       }
-       else 
-       {
-            $qry="insert into add_company(company_name)values('$cname')";
-            mysql_query($qry);
-            return true;
-         }
-         }
-    
-      function user_insert($usname,$pass,$cname)
+       
+      function user_insert($usname,$pass,$cid)
         {
         //function for inserting users
          $this->db->from('admin_panel');
-        $this->db->select('*');
-        $this->db->where('username',$usname);
+         $this->db->select('*');
+         $this->db->where('username',$usname);
          $log= $this->db->get()->result();
-       if(count($log)==1)
-       {
+         if(count($log)==1)
+        {
         return false;
-       }
+        }
        else 
-       {
+        {
         $pas=crypt($pass,"rl"); 
-        $qr="insert into admin_panel(username,password,company_name,role)values('$usname','$pas','$cname',2)";
+        $qr="insert into admin_panel(username,password,company_id,role)values('$usname','$pas',$cid,2)";
         $qry=$this->db->query($qr);
         return true;
         }
-       }
-     
-       function getAllGroups()
-         {//function for display companies.
-         $query = $this->db->query('SELECT company_name FROM add_company');
-         return $query->result();
+        }
+        function  is_admin()
+        {
+            //check whether user is admin or not.
+         if(($this->session->userdata['entry_role'])==1)
+         {
+         return true;
+         } 
+        else
+         {
+        return false;
          }
-      
+        }
+     
 }
+      
+ ?>
 
-
-?>
+ 
